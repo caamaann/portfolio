@@ -1,0 +1,38 @@
+@layer components {
+  .hover-underline::before {
+    bottom: -0.25rem;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: hsl(var(--foreground));
+    z-index: 2;
+    will-change: transform, color;
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.35s;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: 100% 50%;
+  }
+
+  .hover-underline:hover {
+    color: hsl(var(--foreground));
+  }
+
+  .hover-underline:hover::before {
+    transform: scale3d(1, 1, 1);
+    transform-origin: 0% 50%;
+    transition-timing-function: ease;
+  }
+
+  .hover-underline.inverse::before {
+    transform: scale3d(1, 1, 1);
+    transform-origin: 0% 100%;
+  }
+
+  .hover-underline.inverse:hover::before {
+    transform: scale3d(0, 1, 1);
+    transform-origin: 100% 0%;
+  }
+}

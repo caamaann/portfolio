@@ -1,0 +1,79 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "autofix",
+    "react-hooks",
+    "react",
+    "simple-import-sort",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "no-console": "warn",
+    "no-unused-vars": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-sort-props": "error",
+    "react/jsx-uses-react": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // Custom grouping: https://github.com/lydell/eslint-plugin-simple-import-sort#custom-grouping
+          // Side effect imports.
+          ["^\\u0000"],
+          // Node.js builtins prefixed with `node:`.
+          ["^node:"],
+          // `react` related packages.
+          ["^react"],
+          // Packages
+          // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+          ["^@?\\w"],
+          // Absolute imports for internal dependencies.
+          [
+            "^api",
+            "^assets",
+            "^components",
+            "^config",
+            "^pages",
+            "^routes",
+            "^scss",
+            "^store",
+            "^types",
+            "^utils"
+          ],
+          // Anything not matched in another group.
+          ["^"],
+          // Relative imports. Anything that starts with a dot.
+          ["^\\."]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error"
+  }
+}
